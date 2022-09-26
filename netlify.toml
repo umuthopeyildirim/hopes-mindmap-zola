@@ -68,24 +68,46 @@ GRAPH_OPTIONS = """
         	},
         }
         """
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+	[plugins.inputs]
+	baseUrl = "https://garden.umutyildirim.com"
+	buildDir = "public"
+	# disable pretty URLS and keep `index.html` & trailing `.html` file references in paths
+	prettyURLs = false
+	changeFreq = "daily"
+	priority = 0.5
 		
 [[plugins]]
 package = "netlify-plugin-submit-sitemap"
 
-[plugins.inputs]
+	[plugins.inputs]
+	# The base url of your site (optional, default = main URL set in Netlify)
+	baseUrl = "https://garden.umutyildirim.com"
 
-# The base url of your site (optional, default = main URL set in Netlify)
-baseUrl = "https://garden.umutyildirim.com/"
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	sitemapPath = "/sitemap.xml"
 
-# Path to the sitemap URL (optional, default = /sitemap.xml)
-sitemapPath = "/sitemap.xml"
+	# Time in seconds to not submit the sitemap after successful submission
+	ignorePeriod = 0
 
-# Time in seconds to not submit the sitemap after successful submission
-ignorePeriod = 0
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'bing', 'yandex'). Possible providers are currently only 'google', 'bing', 'yandex'.
+	providers = [
+		"google",
+		"bing",
+		"yandex",
+	]
 
-# Enabled providers to submit sitemap to (optional, default = 'google', 'bing', 'yandex'). Possible providers are currently only 'google', 'bing', 'yandex'.
-providers = [
-  "google",
-  "bing",
-  "yandex",
-]
+[[plugins]]
+package = "./plugins/netlify-purge-cloudflare-on-deploy"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
+
+  # to audit a specific absolute url
+  [[plugins.inputs.audits]]
+    url = "https://garden.umutyildirim.com/"
