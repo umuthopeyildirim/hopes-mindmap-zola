@@ -1,32 +1,26 @@
 [build]
-command = "rm -rf __obsidian __site && mkdir __obsidian && mv * __obsidian || true && git clone https://github.com/ppeetteerrs/obsidian-zola.git __site && __site/run.sh"
+command = "rm -rf __obsidian __site && mkdir __obsidian && mv * __obsidian || true && git clone https://github.com/umuthopeyildirim/hopes-mindmap-zola.git __site && __site/run.sh"
 publish = "public"
 
 [build.environment]
-# (Optional) Text in landing page button
-LANDING_BUTTON = "Click to steal some👆"
-# (Optional) Site description on landing page
-LANDING_DESCRIPTION = "I have nothing but intelligence."
-# (REQUIRED) The Markdown page linked to landing page button (e.g. put home for ./home.md)
+LANDING_BUTTON = "Explore"
+LANDING_DESCRIPTION = "This is my personal knowledge management system. Concepts and snippets of knowledge are organized in an (unstructure) inter-linked knowledge graph."
 LANDING_PAGE = "home"
-# (Optional) Site title on landing page
-LANDING_TITLE = "I love obsidian-zola! 💖"
+LANDING_TITLE = "Welcome to my Brain!"
 PYTHON_VERSION = "3.8"
 # (REQUIRED) Site repo URL
-REPO_URL = "https://github.com/ppeetteerrs/obsidian-zola"
+REPO_URL = "https://github.com/umuthopeyildirim/hopes-mindmap"
 # (Optional) Site title in navbar
-SITE_TITLE = "Someone's Second 🧠"
+SITE_TITLE = "Hope's Brain"
 # (Optional) Site title in browser tab (leave blank to use SITE_TITLE)
-SITE_TITLE_TAB = ""
-# (REQUIRED) Netlify site URL
-SITE_URL = ""
+SITE_URL = "https://garden.umutyildirim.com/"
 # (Optional) Site Timezone
-TIMEZONE = "Asia/Hong_Kong"
+TIMEZONE = "US/Eastern"
 ZOLA_VERSION = "0.15.2"
 # (Optional, default title) How to sort notes inside each section on the right sidebar ("date" or "title"). Subsections on side bar are sorted by title, the sort order cannot be changed.
 SORT_BY = "title"
 # (Optional) Google Analytics Measurement ID
-GANALYTICS = ""
+GANALYTICS = "G-2HJQ54SY2T"
 # (Optional, default true) Slugify URLs. Put "" to disable.
 SLUGIFY = "y"
 # (Optional, default true) Shows knowledge graph on home page. Put "" to disable.
@@ -74,3 +68,46 @@ GRAPH_OPTIONS = """
         	},
         }
         """
+[[plugins]]
+package = "netlify-purge-cloudflare-on-deploy"
+
+[[plugins]]
+package = "@netlify/plugin-sitemap"
+
+	[plugins.inputs]
+	baseUrl = "https://garden.umutyildirim.com"
+	buildDir = "public"
+	# disable pretty URLS and keep `index.html` & trailing `.html` file references in paths
+	prettyURLs = false
+	changeFreq = "daily"
+	priority = 0.5
+		
+[[plugins]]
+package = "netlify-plugin-submit-sitemap"
+
+	[plugins.inputs]
+	# The base url of your site (optional, default = main URL set in Netlify)
+	baseUrl = "https://garden.umutyildirim.com"
+
+	# Path to the sitemap URL (optional, default = /sitemap.xml)
+	sitemapPath = "/sitemap.xml"
+
+	# Time in seconds to not submit the sitemap after successful submission
+	ignorePeriod = 0
+
+	# Enabled providers to submit sitemap to (optional, default = 'google', 'bing', 'yandex'). Possible providers are currently only 'google', 'bing', 'yandex'.
+	providers = [
+		"google",
+		"bing",
+		"yandex",
+	]
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+    output_path = "reports/lighthouse.html"
+
+  # to audit a specific absolute url
+  [[plugins.inputs.audits]]
+    url = "https://garden.umutyildirim.com/"
