@@ -69,6 +69,9 @@ GRAPH_OPTIONS = """
         }
         """
 [[plugins]]
+package = "netlify-purge-cloudflare-on-deploy"
+
+[[plugins]]
 package = "@netlify/plugin-sitemap"
 
 	[plugins.inputs]
@@ -98,9 +101,6 @@ package = "netlify-plugin-submit-sitemap"
 		"bing",
 		"yandex",
 	]
-
-[[plugins]]
-package = "./plugins/netlify-purge-cloudflare-on-deploy"
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"

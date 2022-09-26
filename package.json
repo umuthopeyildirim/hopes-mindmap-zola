@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@netlify/plugin-lighthouse": "^3.4.1"
+  },
+  "dependencies": {
+    "netlify-purge-cloudflare-on-deploy": "^1.2.0"
   }
 }

@@ -900,6 +900,13 @@ negotiator@0.6.3:
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
   integrity sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
 
+netlify-purge-cloudflare-on-deploy@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/netlify-purge-cloudflare-on-deploy/-/netlify-purge-cloudflare-on-deploy-1.2.0.tgz#426349fb4d536ab269181b6588a23f7e434b8809"
+  integrity sha512-MHAC9cQHIcoloxdVj0yV0n6qg3h96BCJjJkyBfmOqhTmWNMwRlaIZK86yc3c1KLWNW4S+eNn4H2ULqXrapkf8A==
+  dependencies:
+    node-fetch "^2.6.0"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
@@ -907,7 +914,7 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-fetch@2.6.7:
+node-fetch@2.6.7, node-fetch@^2.6.0:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
